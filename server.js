@@ -47,6 +47,10 @@ const contactSchema = mongoose.Schema({
 //create model for contact
 const contactModel = mongoose.model("contact book", contactSchema);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to my server!");
+});
+
 //creating a new contact
 app.post("/contact", async (req, res) => {
   try {
