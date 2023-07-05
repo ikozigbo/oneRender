@@ -21,7 +21,7 @@ mongoose
 
 // create schema for  contact book
 
-const contactSchema = mongoose.Schema({
+const contactSchema = new mongoose.Schema({
   firstname: { type: String, required: [true, "first name is required"] },
   lastname: { type: String, required: [true, "last name is required"] },
   Contactaddress: {
@@ -45,7 +45,7 @@ const contactSchema = mongoose.Schema({
 });
 
 //create model for contact
-const contactModel = mongoose.model("contact book", contactSchema);
+const contactModel = mongoose.model("contactbook", contactSchema);
 
 app.get("/", (req, res) => {
   res.send("Welcome to my server!");
@@ -73,7 +73,7 @@ app.post("/contact", async (req, res) => {
 });
 
 // getting all contacts
-app.get("/contact", async (req, res) => {
+app.get("/contacts", async (req, res) => {
   try {
     const contacts = await contactModel.find();
     if (!contacts) {
